@@ -1,7 +1,4 @@
 {
-	"browserslist": [
-		"defaults"
-	],
 	"description": "TODO",
 	"devDependencies": {
 		"@babel/core": "7.11.6",
@@ -21,6 +18,7 @@
 		"eslint-plugin-svelte3": "2.7.3",
 		"glob": "7.1.6",
 		"husky": "4.3.0",
+		"lerna": "^3.22.1",
 		"lint-staged": "10.4.0",
 		"postcss": "8.0.5",
 		"prettier": "2.1.2",
@@ -43,19 +41,13 @@
 			"pre-commit": "lint-staged"
 		}
 	},
-	"keywords": [
-		"svelte",
-		"component",
-		"library"
-	],
-	"license": "TODO",
 	"lint-staged": {
-		"*.{svelte, html, css, scss, stylus, js, ts, json, yml, md}": [
-			"prettier --write",
-			"git add"
-		],
 		"*.{js, svelte}": [
 			"eslint --fix",
+			"git add"
+		],
+		"*.{svelte, html, css, scss, stylus, js, ts, json, yml, md}": [
+			"prettier --write",
 			"git add"
 		]
 	},
@@ -65,7 +57,7 @@
 		"tabWidth": 4,
 		"useTabs": true
 	},
-	"repository": "TODO",
+	"private": true,
 	"scripts": {
 		"cy:open": "cypress open",
 		"cy:run": "cypress run",
@@ -74,9 +66,8 @@
 		"prepare": "node preprocess",
 		"prepublishOnly": "npm run prepare",
 		"start": "sirv public",
-		"test": "start-server-and-test dev http://localhost:5000 cy:run",
-		"storybook": "start-storybook -p 6006"
+		"storybook": "start-storybook -p 6006",
+		"test": "start-server-and-test dev http://localhost:5000 cy:run"
 	},
-	"svelte": "dist/index.js",
-	"dependencies": {}
+	"svelte": "dist/index.js"
 }

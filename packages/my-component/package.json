@@ -1,0 +1,18 @@
+{
+	"description": "TODO",
+	"devDependencies": {
+		"svelte": "^3.0.0"
+	},
+	"files": [
+		"dist"
+	],
+	"keywords": [
+		"svelte",
+		"component",
+		"library"
+	],
+	"license": "TODO",
+	"name": "TODO",
+	"repository": "TODO",
+	"svelte": "dist/index.js"
+}
