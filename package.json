@@ -18,7 +18,7 @@
 		"eslint-plugin-svelte3": "2.7.3",
 		"glob": "7.1.6",
 		"husky": "4.3.0",
-		"lerna": "^3.22.1",
+		"lerna": "3.22.1",
 		"lint-staged": "10.4.0",
 		"postcss": "8.0.5",
 		"prettier": "2.1.2",
@@ -60,15 +60,17 @@
 	},
 	"private": true,
 	"scripts": {
+		"bootstrap": "lerna bootstrap",
 		"cy:open": "cypress open",
 		"cy:run": "cypress run",
 		"dev": "rollup -c -w",
+		"example:svelte": "lerna run dev --scope=@examples/svelte --stream",
 		"lint": "eslint --color --ignore-path .gitignore .",
 		"prepare": "node preprocess",
 		"prepublishOnly": "npm run prepare",
 		"start": "sirv public",
 		"storybook": "start-storybook -p 6006",
-		"test": "start-server-and-test dev http://localhost:5000 cy:run"
+		"test:svelte": "start-server-and-test example:svelte http://localhost:3000 cy:run"
 	},
 	"svelte": "dist/index.js"
 }
