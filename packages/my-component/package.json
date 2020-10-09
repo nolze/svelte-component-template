@@ -12,7 +12,8 @@
 		"library"
 	],
 	"license": "TODO",
-	"name": "TODO",
+	"name": "my-component",
 	"repository": "TODO",
+	"readme": "TODO",
 	"svelte": "dist/index.js"
 }
