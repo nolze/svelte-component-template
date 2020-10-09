@@ -7,10 +7,10 @@ const { sveltePreprocessConfig } = require('./svelte-preprocess.config');
 
 const main = () => {
 	// source file paths
-	const srcPath = path.join(__dirname, 'src/components');
+	const srcPath = path.join(__dirname, 'packages');
 
 	// read glob of files in directory
-	glob(path.join(srcPath, '**/*'), {}, (error, files) => {
+	glob(path.join(srcPath, '**/*'), {}, async (error, files) => {
 		// handling error
 		if (error) {
 			console.error('Unable to scan directory: ' + error);
@@ -18,10 +18,17 @@ const main = () => {
 		}
 
 		// listing all files using forEach
-		files.forEach(async (file) => {
+		for (const file of files) {
+			if (
+				!file.includes('/src/') ||
+				file.includes('.stories.') ||
+				fs.lstatSync(file).isDirectory()
+			)
+				continue;
+
 			// load file
 			const sourceFile = fs.readFileSync(file, 'utf-8');
-			const distFile = file.replace('/src/components/', '/dist/');
+			const distFile = file.replace('/src/', '/dist/');
 
 			// create directory and file
 			fs.mkdirSync(path.dirname(distFile), {
@@ -38,7 +45,7 @@ const main = () => {
 				// copy static files
 				fs.copyFileSync(file, distFile);
 			}
-		});
+		}
 	});
 };
 
